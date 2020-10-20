@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do's Lists</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav><h1>To-Do's Local Hub</h1>
+      <div class="btn-holders">
+        <button class="sign-in-btn">Sign in</button>
+        <button class="sign-up-btn">Sign up</button>
+      </div></nav>
+    <section class="main-section">
+      <div class="description">
+        <h2>Take a peek at your to-dos!</h2>
+        <p>
+          Just Log in or Sign up to manage your To-Do lists. You will be able to
+          create new lists, save them and display all of your To-Dos.
+        </p>
+        <p>
+          This app helps you stay organized and allows you to work offline so
+          you can organize your work and life.
+        </p>
+        
+      </div>
+      <div class="main-img-cont">
+        <img class="to-do-img" src="img/To-dos.png" alt="" />
+      </div>
+    </section>
+    <section class="sign-in-section collapsed">
+      <h2 class="back-to-home">
+        <i class="fas fa-arrow-circle-left"></i> Back to main Section
+      </h2>
+      <div class="form-card-sign-in">
+        <h2>Sign in to view your to-dos</h2>
+        <form id="signInForm" class="sign-in-form">
+
+          <div class="form-control"><label for="email">Email Address</label>
+            <input type="email" name="email" id="signInEmail" /><i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+          <div class="form-control"><label for="password">Password</label>
+            <input type="password" name="password" id="signInPassword" /><i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+          
+          <button type="submit" class="submit-sign-in">Submit</button>
+          <div class="sign-in-icon-holder">
+            <i class="fas fa-lock"></i>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="sign-up-section collapsed">
+      <h2 class="back-to-home2">
+        <i class="fas fa-arrow-circle-left"></i> Back to main Section
+      </h2>
+      <div class="form-card-sign-up">
+        <h2>Sign up to create your to-dos</h2>
+        <form id="signUpForm" class="sign-up-form">
+          <div class="form-control"><label for="name">Your Full Name</label>
+            <input type="text" name="name" id="signUpName" autocomplete="off"/><i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="email">Email Address</label>
+          <input type="email" name="email" id="signUpEmail" /><i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="password">Password</label>
+          <input type="password" name="password" id="signUpPassword" /><i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+          </div>
+          <button type="submit" class="submit-sign-up">Submit</button>
+          <div class="sign-in-icon-holder">
+            <i class="fas fa-lock"></i>
+          </div>
+        </form>
+      </div>
+    </section>
+<section class="todosListContainer collapsed">
+  <p class="log-out-option">Log out of your Account</p>
+  <header class="todos-header"><h1><i class="fas fa-check-circle"></i> <span class="activeUsertittle"></span>'s Todo List</h1></header>
+  <form class="todo-form">
+    <input type="text" class="todo-input">
+    <button class="todo-button" type="submit"><i class="fas fa-plus-square"></i></button>
+    <div class="select">
+      <select name="todos" class="filter-todo">
+        <option value="all">All Todos</option>
+        <option value="completed">Completed Todos</option>
+        <option value="uncompleted">Uncompleted Todos</option>
+      </select>
+    </div>
+  </form>
+  <div class="todos-container">
+    <ul class="todo-list"></ul>
+  </div>  
+  
+</section>
+
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"
+    ></script>
+    <script type="text/javascript" src="/main.js"></script>
+  </body>
+</html>

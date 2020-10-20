@@ -1,0 +1,474 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  width: 100%;
+  text-align: center;
+  height: 70px;
+
+  color: #13c48e;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5vw;
+}
+nav::after {
+  background: linear-gradient(to right, #9e7cc1, #8ecdea);
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 70px;
+  height: 3px;
+  left: 0;
+}
+
+.main-section {
+  width: 100%;
+  height: 50vh;
+  background-color: rgb(233, 232, 232, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-img-cont {
+  width: 400px;
+  height: 400px;
+  mix-blend-mode: multiply;
+  /*border: 3px solid #35e9b2;*/
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px 2px #8ecdea70;
+}
+.to-do-img {
+  width: 600px;
+  margin: -31px 0px 0px -90px;
+}
+
+.description {
+  width: 400px;
+  margin-right: 40px;
+}
+
+.description h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.description p {
+  line-height: 22px;
+}
+.btn-holders {
+}
+.btn-holders button {
+  padding: 5px 10px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 3px solid #9e7cc1;
+  color: #000000;
+  font-size: 20px;
+  width: 170px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px rgb(209, 209, 209);
+}
+
+.btn-holders button:hover {
+  background-color: #8e12c4;
+  color: white;
+  border: 3px solid #8e12c4;
+}
+
+.btn-holders button:active {
+  transform: scale(0.95);
+}
+
+.sign-in-section,
+.sign-up-section {
+  width: 100%;
+  height: 70vh;
+  top: 70px;
+  left: 0;
+  position: absolute;
+  background-color: #12c48e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.collapsed {
+  display: none;
+}
+
+.form-card-sign-in,
+.form-card-sign-up {
+  width: 400px;
+
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.form-card-sign-up {
+  height: 675px;
+}
+
+.form-card-sign-in {
+  height: 560px;
+}
+
+.form-card-sign-in h2,
+.form-card-sign-up h2 {
+  padding: 18px;
+  background-color: #8e12c4;
+  color: #ffffff;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid #ffffff;
+}
+
+.form-card-sign-in h2:hover,
+.form-card-sign-up h2:hover {
+  background-color: #c41248;
+}
+
+.sign-in-form,
+.sign-up-form {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.sign-in-form label,
+.sign-up-form label {
+  display: block;
+  text-align: left;
+  padding: 8px 0;
+}
+
+.sign-in-form input,
+.sign-up-form input {
+  width: 100%;
+  border: 2px solid #f0f0f0;
+  padding: 15px 10px;
+  border-radius: 4px;
+  outline: none;
+  color: rgb(48, 47, 47);
+}
+
+.form-control {
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.sign-up-form:nth-child(5) {
+  background: #ff0000;
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
+}
+
+.form-control.success i.fa-check-circle {
+  color: #2ecc71;
+  visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control.error input {
+  border-color: #e74c3c;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+.form-control i {
+  position: absolute;
+  top: 45px;
+  right: 8px;
+  visibility: hidden;
+  font-size: 1.5rem;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.form-control small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+.submit-sign-in,
+.submit-sign-up {
+  margin-top: 50px;
+  width: 100%;
+  padding: 20px 0;
+  border-radius: 5px;
+  background-color: #8e12c4;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  box-shadow: 2px 3px 5px 0px rgba(50, 50, 50, 0.2);
+  cursor: pointer;
+}
+
+.submit-sign-in:hover,
+.submit-sign-up:hover {
+  background-color: #c41248;
+  color: #ffffff;
+}
+
+.submit-sign-in:active {
+  transform: scale(0.95);
+}
+
+.sign-in-icon-holder {
+  margin-top: 35px;
+  transition: all 1s ease-in-out;
+}
+
+.sign-in-icon-holder i {
+  font-size: 55px;
+  color: #8e12c4;
+}
+
+.sign-in-icon-holder:hover {
+  transform: rotate(360deg);
+}
+
+.back-to-home:hover,
+.back-to-home2:hover {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.todosListContainer {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  background-image: url("https://res.cloudinary.com/julipac/image/upload/v1603227873/heroback.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.log-out-option {
+  text-align: center;
+  margin-top: 30px;
+  display: inline-block;
+  border-bottom: 1px solid #a1f3a1;
+  cursor: pointer;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.log-out-option:hover {
+  color: #ff6f47;
+  background: white;
+  border: 0;
+  padding: 5px;
+}
+.log-out-option:active {
+  transform: scale(0.9);
+}
+
+.todos-header {
+  font-size: 1.5rem;
+  color: #a1f3a1;
+}
+
+.todos-header h1 {
+  border: 1px dashed white;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.todos-header,
+.todo-form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-form input,
+.todo-form button {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  background: white;
+  outline: none;
+}
+
+.todo-form button {
+  color: #d88771;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.todo-form button:hover {
+  background: #d88771;
+  color: white;
+}
+.todos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 400px;
+}
+.todo-list {
+  min-width: 30%;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  background: white;
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.todo li {
+  flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+  background: #ff6f47;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.complete-btn {
+  background: rgb(73, 204, 73);
+}
+
+.todo-item {
+  padding: 0rem 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+select {
+  color: #ff6f47;
+  width: 10rem;
+  cursor: pointer;
+  padding: 1rem;
+  min-width: 200px;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  background: #ff6f47;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.select:hover::after {
+  background: white;
+  color: #ff6f47;
+}
+
+/* Media Queries*/
+
+@media screen and (max-width: 600px) {
+  nav {
+    font-size: 4.5vw;
+  }
+  .main-section {
+    flex-direction: column;
+  }
+  .description {
+    margin-top: 10px;
+    margin-right: 0;
+  }
+  .main-img-cont {
+    transform: scale(0.85);
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 800px) {
+  nav {
+    font-size: 4.1vw;
+  }
+  .main-section {
+    flex-wrap: wrap;
+    height: 60vh;
+  }
+  .description {
+    margin-top: 20px;
+    margin-right: 0;
+  }
+
+  .main-img-cont {
+    transform: scale(0.55);
+  }
+}
+
+@media screen and (min-width: 1020px) and (max-width: 1300px) {
+  nav {
+    font-size: 3vw;
+  }
+}
