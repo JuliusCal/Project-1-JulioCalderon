@@ -65,8 +65,7 @@ nav::after {
 .description p {
   line-height: 22px;
 }
-.btn-holders {
-}
+
 .btn-holders button {
   padding: 5px 10px;
   border: 0;
@@ -163,6 +162,11 @@ nav::after {
   border-radius: 4px;
   outline: none;
   color: rgb(48, 47, 47);
+}
+
+.sign-in-form input:focus,
+.sign-up-form input:focus {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .form-control {
@@ -306,6 +310,7 @@ nav::after {
   border: 1px dashed white;
   padding: 6px;
   border-radius: 5px;
+  margin: 0 10px;
 }
 
 .todos-header,
@@ -470,5 +475,13 @@ select {
 @media screen and (min-width: 1020px) and (max-width: 1300px) {
   nav {
     font-size: 3vw;
+  }
+}
+@media screen and (max-width: 680px) {
+  .todo-form {
+    flex-direction: column;
+  }
+  .todos-header h1 {
+    font-size: 26px;
   }
 }

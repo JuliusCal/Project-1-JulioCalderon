@@ -44,6 +44,7 @@ signInBtn.addEventListener('click', () => {
   signInBtn.classList.add("collapsed");
   signUpSection.classList.add("collapsed");
   signUpBtn.classList.remove("collapsed");
+  signInUserEmail.focus();
 })
 
 signUpBtn.addEventListener('click', () => {
@@ -183,6 +184,8 @@ function deleteCheckTodo(e) {
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
+    textpiece = todo.querySelector('li').innerText;
+    console.log(textpiece);
   }
 }
 
@@ -365,6 +368,24 @@ function removeTodos(todo) {
   localStorage.setItem(todoskey, JSON.stringify(todos))
 }
 
+function completeUncomplete(todo) {
+  let activeUser = localStorage.getItem('ActiveUser');
+  let activeUserName = JSON.parse(localStorage.getItem(activeUser))[0];
+  let todoskey = `${activeUserName}-todos`
+  let todos;
+  if (localStorage.getItem(todoskey) === null) {
+  todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem(todoskey));
+  }
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1); 
+  localStorage.setItem(todoskey, JSON.stringify(todos))
+}
+
+
+
+
 
 
 function todosPanel() {
@@ -385,3 +406,4 @@ function todosPanel() {
 
 
 signUpFormControl[2].style.margin = "0";
+
