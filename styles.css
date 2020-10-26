@@ -97,11 +97,15 @@ nav::after {
   top: 70px;
   left: 0;
   position: absolute;
-  background-color: #12c48e;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(rgba(142, 18, 196, 0.4), rgba(142, 18, 196, 0.4)),
+    url("https://res.cloudinary.com/julipac/image/upload/v1603483139/Matrix.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .collapsed {
@@ -263,10 +267,20 @@ nav::after {
   transform: rotate(360deg);
 }
 
+.back-to-home,
+.back-to-home2 {
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
 .back-to-home:hover,
 .back-to-home2:hover {
-  cursor: pointer;
-  color: #ffffff;
+  border-bottom: 3px solid #a1f3a1;
+}
+
+.pronto {
+  color: #d3fdd3;
 }
 
 .todosListContainer {
@@ -483,5 +497,24 @@ select {
   }
   .todos-header h1 {
     font-size: 26px;
+  }
+  .btn-holders button {
+    font-size: 14px;
+    width: 140px;
+    padding: 3px;
+  }
+  .btn-holders button:last-child {
+    margin-top: 4px;
+  }
+  .description h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+  .description p {
+    text-align: center;
+    margin: 15px;
+  }
+  nav {
+    font-size: 3.5vw;
   }
 }

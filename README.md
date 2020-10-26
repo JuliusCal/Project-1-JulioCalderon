@@ -11,3 +11,14 @@ function sayMyName(name) {
     `Your Name is ${name}`
 }
 ```
+
+## Task Completed Before
+
+```Javascript
+if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
+    textpiece = todo.querySelector('li').innerText;
+    console.log(textpiece);
+  }
+```

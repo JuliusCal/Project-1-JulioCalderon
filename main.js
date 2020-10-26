@@ -14,20 +14,25 @@ const signInBtn = document.querySelector(".sign-in-btn"),
   logInErrorMessage = document.querySelector(".loginErrorMessage"),
   signUpErrorMessage = document.querySelector(".sigUpErrorMessage"),
   signUpForm = document.querySelector('.sign-up-form'),
+  signInForm = document.querySelector('.sign-in-form'),
   signUpFormControl = document.querySelectorAll('.form-control'),
   activeUserTittle = document.querySelector('.activeUsertittle'),
   todosContainer = document.querySelector('.todosListContainer'),
   todosGroup = [],
-  keysGroup = [],
-  logOutBtn = document.querySelector('.log-out-option');
+  keysGroup = Object.keys(localStorage),
+  logOutBtn = document.querySelector('.log-out-option'),
+  inputFields = [signUpName, signUpUserEmail, signUpUserPwd, signInUserEmail, signInUserPwd];
 
 
+inputFields.forEach(item => {
+  item.addEventListener('blur', event => {
+    if (item.value !== "") {item.style.background = "#d3fdd3"; item.style.border = "0"}
+    else {item.style.background = "#ffffff";item.style.border = "2px solid #f0f0f0"}
+  })
+})
 
 
-  for(let i=0; i<localStorage.length; i++) {
-    let key = localStorage.key(i);
-    keysGroup.push(key);
-  }
+  
   
 signInBackToHome.addEventListener('click', () => {
   signInSection.classList.add('collapsed');
@@ -52,6 +57,7 @@ signUpBtn.addEventListener('click', () => {
   signUpBtn.classList.toggle("collapsed");
   signInSection.classList.add("collapsed");
   signInBtn.classList.remove("collapsed");
+  signUpName.focus();
 })
 
 
@@ -85,6 +91,7 @@ const password = crypt.encrypt(signUpUserPwd.value.trim());
 userData.push(name, password);
 localStorage.setItem(email, JSON.stringify(userData));
 signUpForm.reset();
+signInForm.reset();
 signInSection.classList.remove("collapsed");
 signInBtn.classList.add("collapsed");
 signUpSection.classList.add("collapsed");
@@ -94,11 +101,13 @@ signUpBtn.classList.remove("collapsed");
 /* -------------------------------------------------------------------------- */
 /*                     Signing in the user if data exists                     */
 /* -------------------------------------------------------------------------- */
-signInSubmitbtn.addEventListener("click", (e) => { 
+signInForm.addEventListener("submit", (e) => { 
   e.preventDefault();
   signInCheckInputs();
   const userEmail = signInUserEmail.value.trim();
   let userPassword = signInUserPwd.value.trim();
+  console.log(userEmail)
+  console.log(keysGroup.includes("calderonr.jc@gmail.com"));
   if (keysGroup.includes(userEmail) === false) {
     setErrorFor(signInUserEmail, 'No Account under this email Address') 
     return
@@ -166,6 +175,8 @@ function addTodo(e) {
   let activeUser = localStorage.getItem('ActiveUser');
   let activeUserName = JSON.parse(localStorage.getItem(activeUser))[0];
   saveLocalTodos(activeUserName, todoInput.value);
+  let userStatuskey = activeUser + "-todos-status";
+  saveTodosStatus(userStatuskey, todoInput.value);
   todoInput.value = "";
   location.reload();
 } 
@@ -184,10 +195,26 @@ function deleteCheckTodo(e) {
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
+    let activeUser = localStorage.getItem('ActiveUser');
     textpiece = todo.querySelector('li').innerText;
-    console.log(textpiece);
+    let myKey = `${activeUser}-todos-status`;
+    let myStatusList = JSON.parse(localStorage.getItem(myKey));
+    const index = myStatusList.findIndex(function(el, index) {
+      return el.todo === textpiece
+    });
+    if (myStatusList[index].isCompleted === false) {
+      myStatusList[index].isCompleted = true;
+    } else {
+      myStatusList[index].isCompleted = false;
+    }
+    localStorage.setItem(myKey, JSON.stringify(myStatusList));
   }
 }
+
+
+
+
+
 
 //Function "filterTodos"
 
@@ -323,6 +350,20 @@ function saveLocalTodos(user, todo) {
 }
 
 
+function saveTodosStatus(userkey, todo) {
+  let todosStatusListing;
+  if (localStorage.getItem(userkey) === null) {
+   todosStatusListing = [];
+  } else {
+    todosStatusListing = JSON.parse(localStorage.getItem(userkey))
+  }
+  
+  let todoStatus = {"todo": todo, "isCompleted": false};
+  todosStatusListing.push(todoStatus);
+  localStorage.setItem(userkey, JSON.stringify(todosStatusListing));
+}
+
+
 function getTodos() {
   let activeUser = localStorage.getItem('ActiveUser');
   let activeUserName = JSON.parse(localStorage.getItem(activeUser))[0];
@@ -350,8 +391,27 @@ function getTodos() {
   trashButton.classList.add("trash-btn")
   todoDiv.appendChild(trashButton);
   todoList.appendChild(todoDiv); 
+  });
+  let statuskey = `${activeUser}-todos-status`;
+  let statuses;
+  if (localStorage.getItem(statuskey) === null) {
+  statuses = [];
+  } else {
+    statuses = JSON.parse(localStorage.getItem(statuskey));
+  }
+  let todosDivs = document.querySelectorAll(".todo");
+  statuses.forEach(function(status, index) {
+    if (status.isCompleted === true) {
+      todosDivs[index].classList.add("completed")
+    }
   })
+  
 }
+
+
+
+
+
 
 function removeTodos(todo) {
   let activeUser = localStorage.getItem('ActiveUser');
@@ -403,7 +463,48 @@ function todosPanel() {
 
 
 
+function focusNext() {
+
+}
+
+
+
 
 
 signUpFormControl[2].style.margin = "0";
 
+
+
+/* let test1 = JSON.parse(localStorage.getItem("calderonr.jc@gmail.com-properties" ));
+
+testo = "rememberthemilk"
+
+for(var key in test1) {
+  var value = test1[key];
+  console.log(value);
+}
+
+ */
+
+/* const myBoo = [];
+let todon = "Remember the Milk"
+let statusQuo = {"todo": todon, "status": "not-completed"};
+myBoo.push(statusQuo);
+
+console.log(myBoo); */
+
+/* let myKey = "calderonr.jc@gmail.com-todos-status";
+
+let myStatusList = JSON.parse(localStorage.getItem(myKey));
+
+let testtodo1 = "Remember the Milk";
+let testtodo2 = "Shout at the devil";
+
+const index = myStatusList.findIndex(function(el, index) {
+  return el.todo === testtodo2
+});
+
+console.log(index); */
+
+
+//console.log(myStatusList[index].isCompleted);
